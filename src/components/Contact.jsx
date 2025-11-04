@@ -1,4 +1,5 @@
 import './Contact.css'
+// IMPORTANTE: Importar la imagen de fondo
 import contactBg from '../assets/imagen-fondo.jpg'
 
 function Contact() {
@@ -6,67 +7,123 @@ function Contact() {
     e.preventDefault();
     // Aquí integrarías tu servicio de envío (EmailJS, API, etc.)
     console.log('Formulario enviado');
+    
+    // Mostrar mensaje de éxito
+    alert('¡Mensaje enviado correctamente! Nos contactaremos contigo pronto.');
   };
 
   const whatsappLink = "https://wa.me/573107860500?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20servicios%20de%20gr%C3%BAas%20en%20Sogamoso";
 
   return (
-    <section id="contacto" className="contact-section">
+    <section id="contacto" className="contact">
+      {/* Hero Section con diseño consistente */}
       <div className="contact-hero" style={{backgroundImage: `url(${contactBg})`}}>
-        <div className="contact-overlay">
-          <div className="contact-container">
-            <h2 className="contact-title">Contáctenos</h2>
+        <div className="contact-hero-inner">
+          <h2 className="contact-title">Contáctanos</h2>
+          
+          {/* Cards de métodos de contacto */}
+          <div className="contact-methods">
+            <div className="contact-method-card">
+              <div className="method-icon">📝</div>
+              <h3>Formulario</h3>
+              <p>Para cotizaciones detalladas y consultas formales</p>
+            </div>
             
-            <div className="contact-content">
-              <div className="contact-form-wrapper">
-                <p className="contact-description">
-                  <strong>Elige cómo prefieres contactarnos:</strong><br/>
-                  📝 <strong>Formulario:</strong> Para cotizaciones detalladas y consultas formales<br/>
-                  📱 <strong>WhatsApp:</strong> Para respuestas inmediatas y emergencias 24/7
-                </p>
-                
+            <div className="contact-method-card">
+              <div className="method-icon">📱</div>
+              <h3>WhatsApp</h3>
+              <p>Para respuestas inmediatas y emergencias 24/7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Sección de formulario y mapa */}
+      <div className="contact-content">
+        <div className="contact-container">
+          <div className="contact-grid">
+            {/* Formulario con glass morphism */}
+            <div className="form-section">
+              <div className="form-card">
                 <form className="contact-form" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label htmlFor="nombre">Nombre :</label>
+                    <label htmlFor="nombre">
+                      <span className="form-icon">👤</span>
+                      Nombre
+                    </label>
                     <input type="text" id="nombre" name="nombre" required />
                   </div>
                   
                   <div className="form-group">
-                    <label htmlFor="telefono">Teléfono :</label>
+                    <label htmlFor="telefono">
+                      <span className="form-icon">📞</span>
+                      Teléfono
+                    </label>
                     <input type="tel" id="telefono" name="telefono" required />
                   </div>
                   
                   <div className="form-group">
-                    <label htmlFor="email">Correo Electrónico :</label>
+                    <label htmlFor="email">
+                      <span className="form-icon">📧</span>
+                      Correo Electrónico
+                    </label>
                     <input type="email" id="email" name="email" required />
                   </div>
                   
                   <div className="form-group">
-                    <label htmlFor="mensaje">Mensaje :</label>
-                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                    <label htmlFor="mensaje">
+                      <span className="form-icon">💬</span>
+                      Mensaje
+                    </label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Describe el servicio que necesitas..."></textarea>
                   </div>
 
                   <div className="form-buttons">
-                    <button type="submit" className="btn-enviar">SOLICITAR COTIZACIÓN</button>
+                    <button type="submit" className="btn-quote-main">
+                      <span className="btn-icon">📋</span>
+                      SOLICITAR COTIZACIÓN
+                    </button>
                     <a 
                       href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-whatsapp"
+                      className="btn-whatsapp-main"
                     >
-                      <span className="whatsapp-icon">📱</span>
+                      <span className="btn-icon">📱</span>
                       EMERGENCIA 24/7
                     </a>
                   </div>
                 </form>
               </div>
-              
-              <div className="contact-map">
+            </div>
+            
+            {/* Información de contacto con glass morphism */}
+            <div className="info-section">
+              <div className="info-card">
+                <h3>📍 Nuestra Ubicación</h3>
+                <p>Cra. 2 #04-13, Chameza Mayor<br/>Nobsa, Boyacá, Colombia</p>
+                
+                <h3>🕐 Horario de Atención</h3>
+                <p>Las 24 horas, los 7 días de la semana<br/>
+                <strong>Emergencias disponibles siempre</strong></p>
+                
+                <h3>💳 Métodos de Pago</h3>
+                <p>Efectivo • Transferencia bancaria<br/>PayPal • PSE</p>
+                
+                <h3>📱 Contacto Directo</h3>
+                <p>
+                  <strong>(+57) 310 786 0500</strong><br/>
+                  GruizajesSAS@hotmail.com
+                </p>
+              </div>
+
+              {/* Mapa con glass morphism */}
+              <div className="map-card">
                 <iframe 
                   src="https://www.google.com/maps?q=Cra.+2+%2304-13,+Chameza+Mayor,+Nobsa,+Boyac%C3%A1,+Colombia&hl=es&z=16&output=embed"
                   width="100%" 
-                  height="100%" 
-                  style={{border: 0}} 
+                  height="300" 
+                  style={{border: 0, borderRadius: '12px'}} 
                   allowFullScreen 
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
@@ -77,43 +134,23 @@ function Contact() {
           </div>
         </div>
       </div>
-      
+
+      {/* Footer minimalista */}
       <footer className="contact-footer">
         <div className="footer-container">
-          <div className="footer-section">
-            <h3>GRUIZAJES</h3>
-            <p>Servicio de grúas económicas, grúas cama baja, grúas plataforma, grúas y plataformas en Sogamoso y Boyacá.</p>
-            <p>Consulta su teléfono de grúa aquí. ¡Contáctenos!</p>
-            <div className="footer-phone">
-              <span className="phone-icon">📞</span>
+          <div className="footer-content">
+            <div className="footer-brand">
+              <h3>GRUIZAJES S.A.S</h3>
+              <p>Servicios de grúas y transporte especializado en Boyacá</p>
             </div>
-          </div>
-          
-          <div className="footer-section">
-            <div className="contact-info">
-              <div className="contact-item">
-                <span className="icon">🏠</span>
-                <span>Contáctenos</span>
-              </div>
-              <p>cra 2 #04-13, Chameza Mayor, Nobsa, Boyacá, Colombia</p>
-              <p>GruizajesSAS@hotmail.com</p>
-              <p>(+57) 3107860500</p>
-            </div>
-          </div>
-          
-          <div className="footer-section">
-            <div className="attention-info">
-              <div className="contact-item">
-                <span className="icon">👤</span>
-                <span>Atención</span>
-              </div>
-              <p>Atendemos LAS 24 HORAS</p>
-              <p>Aceptamos pagos en efectivo y paypal</p>
+            <div className="footer-contact">
+              <p>© 2024 Gruizajes S.A.S - Todos los derechos reservados</p>
             </div>
           </div>
         </div>
       </footer>
 
+      {/* WhatsApp flotante */}
       <a 
         href={whatsappLink}
         target="_blank"
@@ -121,7 +158,8 @@ function Contact() {
         className="whatsapp-float"
         title="Contáctanos por WhatsApp"
       >
-        📱
+        <span className="whatsapp-icon">📱</span>
+        <span className="whatsapp-text">WhatsApp</span>
       </a>
     </section>
   )

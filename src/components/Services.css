@@ -281,6 +281,85 @@
   background: #128C7E;
 }
 
+/* Mejoras para los botones de acción */
+.btn-quote {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  flex: 1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-quote:hover {
+  background: #555;
+  transform: translateY(-1px);
+}
+
+/* Prevenir eventos de scroll no deseados */
+.fleet-gallery {
+  position: relative;
+  z-index: 1;
+}
+
+.fleet-gallery.active {
+  z-index: 2;
+}
+
+/* Mejorar la experiencia de scroll */
+.services {
+  scroll-behavior: smooth;
+}
+
+/* Asegurar que los botones de servicio sean clickeables */
+.service-card {
+  position: relative;
+  z-index: 10;
+}
+
+/* Correcciones específicas para el scroll */
+.service-card.active {
+  background: rgba(255,255,255,0.4);
+  border-color: rgba(255,255,255,0.7);
+}
+
+.fleet-gallery {
+  position: relative;
+  scroll-margin-top: 100px; /* Ayuda con el scroll automático */
+}
+
+/* Prevenir eventos no deseados */
+.fleet-actions > * {
+  pointer-events: auto;
+}
+
+/* Debugging temporal - puedes remover después */
+.fleet-gallery[data-section] {
+  border-left: 3px solid transparent;
+}
+
+.fleet-gallery[data-section="gruas"].active {
+  border-left-color: #ff6b6b;
+}
+
+.fleet-gallery[data-section="camiones"].active {
+  border-left-color: #4ecdc4;
+}
+
+.fleet-gallery[data-section="elevacion"].active {
+  border-left-color: #45b7d1;
+}
+
+.fleet-gallery[data-section="transporte"].active {
+  border-left-color: #96ceb4;
+}
+
 /* Responsive mejorado */
 @media (max-width: 768px) {
   .services-hero {

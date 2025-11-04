@@ -1,18 +1,51 @@
 import './Services.css'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import gruasIcon from '../assets/icons/gruas.png'
 import camionesIcon from '../assets/icons/camiones-grua.png'
 import elevacionIcon from '../assets/icons/equipos-de-elevacion.png'
 import transporteIcon from '../assets/icons/vehiculos-de-transporte.png'
 
-
 function Services() {
   const [activeSection, setActiveSection] = useState(null)
+  
+  // Referencias para cada galería - CRÍTICO: mantener el mismo orden que el HTML
+  const gruasRef = useRef(null)
+  const camionesRef = useRef(null)
+  const elevacionRef = useRef(null)
+  const transporteRef = useRef(null)
 
   const whatsapp = (servicio) =>
     `https://wa.me/573107860500?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20${encodeURIComponent(servicio)}.`
 
-  // Datos de ejemplo de la flota (puedes reemplazar con tus fotos reales)
+  // Función de scroll MEJORADA - previene conflictos
+  const scrollToSection = (targetRef, sectionName) => {
+    console.log(`Scrolling to: ${sectionName}`) // Para debugging
+    
+    if (!targetRef.current) {
+      console.log(`Ref not found for: ${sectionName}`)
+      return
+    }
+
+    // Cancelar cualquier scroll previo
+    window.scrollTo({
+      top: window.pageYOffset,
+      behavior: 'auto'
+    })
+
+    setTimeout(() => {
+      const element = targetRef.current
+      const rect = element.getBoundingClientRect()
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const targetTop = rect.top + scrollTop - 100 // 100px offset desde arriba
+
+      window.scrollTo({
+        top: targetTop,
+        behavior: 'smooth'
+      })
+    }, 250) // Delay más largo para asegurar que la animación CSS termine
+  }
+
+  // Datos de la flota
   const fleetData = {
     gruas: [
       { id: 1, name: "Grúa Móvil 25T", capacity: "25 toneladas", reach: "35m", image: "/api/placeholder/300/200", available: true },
@@ -40,18 +73,65 @@ function Services() {
   }
 
   const handleServiceClick = (section) => {
-    setActiveSection(activeSection === section ? null : section)
+    console.log(`Clicked: ${section}`) // Para debugging
+    
+    // Cerrar la sección si ya está activa
+    if (activeSection === section) {
+      setActiveSection(null)
+      return
+    }
+
+    // Activar la nueva sección
+    setActiveSection(section)
+    
+    // Mapear secciones a referencias
+    const refMap = {
+      gruas: gruasRef,
+      camiones: camionesRef,
+      elevacion: elevacionRef,
+      transporte: transporteRef
+    }
+
+    // Hacer scroll a la sección correspondiente
+    const targetRef = refMap[section]
+    if (targetRef) {
+      scrollToSection(targetRef, section)
+    }
   }
 
-  const renderFleetGallery = (fleetType, title) => {
+  // Función para manejar cotizaciones sin navegación accidental
+  const handleQuoteClick = (e, vehicleName) => {
+    e.preventDefault()
+    e.stopPropagation()
+    
+    console.log(`Quote clicked for: ${vehicleName}`) // Para debugging
+    
+    // Scroll controlado a contacto
+    setTimeout(() => {
+      const contactSection = document.getElementById('contacto')
+      if (contactSection) {
+        contactSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    }, 100)
+  }
+
+  const renderFleetGallery = (fleetType, title, ref) => {
     const fleet = fleetData[fleetType]
     return (
-      <div className={`fleet-gallery ${activeSection === fleetType ? 'active' : ''}`}>
+      <div 
+        ref={ref}
+        className={`fleet-gallery ${activeSection === fleetType ? 'active' : ''}`}
+        data-section={fleetType}
+      >
         <div className="gallery-header">
           <h3>🚛 Nuestra Flota - {title}</h3>
           <button 
             className="close-gallery"
             onClick={() => setActiveSection(null)}
+            type="button"
           >
             ✕
           </button>
@@ -75,8 +155,22 @@ function Services() {
                   {item.length && <span>📏 {item.length}</span>}
                 </div>
                 <div className="fleet-actions">
-                  <a href="#contacto" className="btn-quote">Cotizar</a>
-                  <a href={whatsapp(item.name)} target="_blank" rel="noreferrer" className="btn-whatsapp-mini">WhatsApp</a>
+                  <button 
+                    className="btn-quote"
+                    onClick={(e) => handleQuoteClick(e, item.name)}
+                    type="button"
+                  >
+                    Cotizar
+                  </button>
+                  <a 
+                    href={whatsapp(item.name)} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="btn-whatsapp-mini"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    WhatsApp
+                  </a>
                 </div>
               </div>
             </div>
@@ -88,13 +182,17 @@ function Services() {
 
   return (
     <section id="servicios" className="services">
-      {/* Portada original del mockup */}
+      {/* Portada de servicios */}
       <div className="services-hero">
         <div className="services-hero-inner">
           <h2 className="services-title">Servicio de Grúas</h2>
           
           <div className="services-grid">
-            <button className="service-card" onClick={() => handleServiceClick('gruas')}>
+            <button 
+              className={`service-card ${activeSection === 'gruas' ? 'active' : ''}`}
+              onClick={() => handleServiceClick('gruas')}
+              type="button"
+            >
               <div className="service-icon-wrapper">
                 <img src={gruasIcon} alt="Grúas" className="service-icon-img" />
               </div>
@@ -102,7 +200,11 @@ function Services() {
               <span className="fleet-count">5 equipos</span>
             </button>
 
-            <button className="service-card" onClick={() => handleServiceClick('camiones')}>
+            <button 
+              className={`service-card ${activeSection === 'camiones' ? 'active' : ''}`}
+              onClick={() => handleServiceClick('camiones')}
+              type="button"
+            >
               <div className="service-icon-wrapper">
                 <img src={camionesIcon} alt="Camiones Grúa" className="service-icon-img" />
               </div>
@@ -110,7 +212,11 @@ function Services() {
               <span className="fleet-count">4 equipos</span>
             </button>
 
-            <button className="service-card" onClick={() => handleServiceClick('elevacion')}>
+            <button 
+              className={`service-card ${activeSection === 'elevacion' ? 'active' : ''}`}
+              onClick={() => handleServiceClick('elevacion')}
+              type="button"
+            >
               <div className="service-icon-wrapper">
                 <img src={elevacionIcon} alt="Equipos de elevación" className="service-icon-img" />
               </div>
@@ -118,7 +224,11 @@ function Services() {
               <span className="fleet-count">3 equipos</span>
             </button>
 
-            <button className="service-card" onClick={() => handleServiceClick('transporte')}>
+            <button 
+              className={`service-card ${activeSection === 'transporte' ? 'active' : ''}`}
+              onClick={() => handleServiceClick('transporte')}
+              type="button"
+            >
               <div className="service-icon-wrapper">
                 <img src={transporteIcon} alt="Vehículos de transporte" className="service-icon-img" />
               </div>
@@ -129,11 +239,11 @@ function Services() {
         </div>
       </div>
 
-      {/* Galerías de flota */}
-      {renderFleetGallery('gruas', 'Grúas')}
-      {renderFleetGallery('camiones', 'Camiones Grúa')}
-      {renderFleetGallery('elevacion', 'Equipos de Elevación')}
-      {renderFleetGallery('transporte', 'Vehículos de Transporte')}
+      {/* CRÍTICO: Mantener exactamente este orden */}
+      {renderFleetGallery('gruas', 'Grúas', gruasRef)}
+      {renderFleetGallery('camiones', 'Camiones Grúa', camionesRef)}
+      {renderFleetGallery('elevacion', 'Equipos de Elevación', elevacionRef)}
+      {renderFleetGallery('transporte', 'Vehículos de Transporte', transporteRef)}
     </section>
   )
 }
