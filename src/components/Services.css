@@ -59,11 +59,11 @@
   position: relative;
   z-index: 2;
 }
-
 .service-card {
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  border: 2px solid rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.294);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
   padding: 30px 25px;
   text-align: center;
@@ -71,16 +71,18 @@
   transition: all 0.3s ease;
   width: 200px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  color: #1f1f1f; /* Texto más oscuro para contraste */
 }
 
+/* Mantener animación suave en hover */
 .service-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  background: rgba(255,255,255,1);
-  border-color: rgba(255,255,255,1);
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px) scale(1.05);
+  color: #000;
 }
-
 .service-card.active {
   background: rgba(255,255,255,1);
   border-color: rgba(255,255,255,1);
@@ -94,32 +96,33 @@
   height: 120px;
 }
 
+/* Iconos con brillo normal sin filtros oscuros */
 .service-icon-img {
   width: 120px;
   height: 120px;
   object-fit: contain;
-  filter: brightness(0) saturate(100%);
-  transition: all 0.3s ease;
+  filter: none; /* Elimina filtros de brillo que oscurecen */
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
+
 
 .service-card:hover .service-icon-img {
-  filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(2%) hue-rotate(316deg) brightness(99%) contrast(99%);
-  transform: scale(1.08);
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.3)); /* Sombra al icono para mejor visibilidad */
+  transform: scale(1.1);
 }
-
+/* Texto y cantidad */
 .service-card h3 {
-  font-size: 1.3rem;
-  color: #222;
   font-weight: 700;
-  margin: 0 0 8px;
-  line-height: 1.2;
+  font-size: 1.2rem;
+  margin: 10px 0 6px;
+  color: inherit;
+  text-shadow: none; /* Para mejor claridad */
 }
-
 .fleet-count {
   font-size: 0.9rem;
-  color: #444;
   font-style: italic;
   font-weight: 600;
+  color: #353434;
 }
 
 .fleet-gallery {
