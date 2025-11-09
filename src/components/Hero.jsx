@@ -1,8 +1,13 @@
 import './Hero.css'
+import imagenFondoInicio from '../assets/imagen-fondo-inicio.JPG'
 
 function Hero() {
   return (
-    <section className="hero" id="inicio">
+    <section 
+      className="hero" 
+      id="inicio"
+      style={{ backgroundImage: `url(${imagenFondoInicio})` }}
+    >
       <div className="hero-content">
         <p className="hero-subtitle">Más de 10 años de experiencia en izajes</p>
         <h1 className="hero-title">
@@ -17,6 +22,5 @@ function Hero() {
     </section>
   )
 }
-
 
 export default Hero
