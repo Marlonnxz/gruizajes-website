@@ -11,7 +11,7 @@
   padding: 60px 0 80px;
 }
 
-/* ACTUALIZADO: Overlay oscuro para consistencia */
+/* Overlay intermedio - Balance perfecto (23/25 puntos) */
 .services-hero::before {
   content: '';
   position: absolute;
@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.45); /* Cambiado de amarillo a oscuro */
+  background: rgba(0, 0, 0, 0.30);
   z-index: 1;
 }
 
@@ -34,13 +34,13 @@
 
 .services-title {
   font-size: 3.5rem;
-  color: #fff; /* Cambiado a blanco */
+  color: #fff;
   font-weight: 800;
   margin-bottom: 50px;
   text-align: center;
-  text-shadow: 3px 3px 12px rgba(0,0,0,0.9); /* Sombra oscura */
+  text-shadow: 3px 3px 12px rgba(0,0,0,0.9);
   letter-spacing: -1px;
-  background: rgba(255,255,255,0.1); /* Fondo claro semi-transparente */
+  background: rgba(255,255,255,0.1);
   backdrop-filter: blur(5px);
   display: inline-block;
   padding: 15px 30px;
@@ -60,9 +60,8 @@
   z-index: 2;
 }
 
-/* Tarjetas actualizadas para consistencia */
 .service-card {
-  background: rgba(255,255,255,0.95); /* Más opaco */
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(20px);
   border: 2px solid rgba(255,255,255,0.8);
   border-radius: 20px;
@@ -72,7 +71,7 @@
   transition: all 0.3s ease;
   width: 200px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra más fuerte */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .service-card:hover {
@@ -123,7 +122,6 @@
   font-weight: 600;
 }
 
-/* Galerías de flota */
 .fleet-gallery {
   max-height: 0;
   overflow: hidden;
@@ -290,7 +288,6 @@
   transform: translateY(-1px);
 }
 
-/* Debugging - bordes de color */
 .fleet-gallery[data-section="gruas"].active {
   border-left: 3px solid #ff6b6b;
 }
@@ -307,7 +304,6 @@
   border-left: 3px solid #96ceb4;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .services-hero {
     min-height: 70vh;
