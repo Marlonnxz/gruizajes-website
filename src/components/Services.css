@@ -1,4 +1,33 @@
-.services { width: 100%; }
+.services { 
+  width: 100%;
+  position: relative;
+}
+
+/* Borde superior delgado */
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FFC107 0%, #FFD54F 50%, #FFC107 100%);
+  z-index: 10;
+  box-shadow: 0 -3px 12px rgba(255, 193, 7, 0.35);
+}
+
+/* Borde inferior delgado */
+.services::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FFC107 0%, #FFD54F 50%, #FFC107 100%);
+  z-index: 10;
+  box-shadow: 0 3px 12px rgba(255, 193, 7, 0.35);
+}
 
 .services-hero {
   background-size: cover;
@@ -11,7 +40,7 @@
   padding: 60px 0 80px;
 }
 
-/* Overlay intermedio - Balance perfecto (23/25 puntos) */
+/* Overlay intermedio */
 .services-hero::before {
   content: '';
   position: absolute;
@@ -311,6 +340,10 @@
     background-attachment: scroll;
   }
   
+  .services::before {
+    height: 6px;
+  }
+  
   .services-title {
     font-size: 2.5rem;
     padding: 12px 20px;
@@ -334,6 +367,10 @@
 }
 
 @media (max-width: 480px) {
+  .services::before {
+    height: 5px;
+  }
+  
   .services-title {
     font-size: 2rem;
   }

@@ -2,6 +2,13 @@ import './Hero.css'
 import imagenFondoInicio from '../assets/imagen-fondo-inicio.JPG'
 
 function Hero() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section 
       className="hero" 
@@ -17,7 +24,9 @@ function Hero() {
           Ofrecemos la grúa correcta para su obra, entregada a tiempo y operada por 
           expertos. Garantizamos seguridad y eficiencia en cada movimiento.
         </p>
-        <button className="btn-solicitar">Solicitar Cotización</button>
+        <button className="btn-solicitar" onClick={() => scrollToSection('contacto')}>
+          Solicitar Cotización
+        </button>
       </div>
     </section>
   )

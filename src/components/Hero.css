@@ -12,7 +12,7 @@
   padding: 80px 20px;
 }
 
-/* Overlay oscuro para mejor legibilidad - igual que las otras secciones */
+/* Overlay oscuro para mejor legibilidad */
 .hero::before {
   content: '';
   position: absolute;
@@ -22,6 +22,19 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.40);
   z-index: 1;
+}
+
+/* Separador inferior delgado y elegante */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FFC107 0%, #FFD54F 50%, #FFC107 100%);
+  z-index: 2;
+  box-shadow: 0 3px 12px rgba(255, 193, 7, 0.35);
 }
 
 .hero-content {
@@ -101,6 +114,10 @@
     padding: 60px 15px;
   }
   
+  .hero::after {
+    height: 3px;
+  }
+  
   .hero-subtitle {
     font-size: 0.9rem;
     letter-spacing: 1px;
@@ -126,6 +143,10 @@
 @media (max-width: 480px) {
   .hero {
     min-height: 70vh;
+  }
+  
+  .hero::after {
+    height: 2px;
   }
   
   .hero-title {
