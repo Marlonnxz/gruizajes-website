@@ -8,25 +8,17 @@ import transporteIcon from '../assets/icons/vehiculos-de-transporte.png'
 function Services() {
   const [activeSection, setActiveSection] = useState(null)
   
-  // Referencias para cada galería - CRÍTICO: mantener el mismo orden que el HTML
   const gruasRef = useRef(null)
   const camionesRef = useRef(null)
   const elevacionRef = useRef(null)
   const transporteRef = useRef(null)
 
   const whatsapp = (servicio) =>
-    `https://wa.me/573107860500?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20${encodeURIComponent(servicio)}.`
+    `https://wa.me/573107866599?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20${encodeURIComponent(servicio)}.`
 
-  // Función de scroll MEJORADA - previene conflictos
   const scrollToSection = (targetRef, sectionName) => {
-    console.log(`Scrolling to: ${sectionName}`) // Para debugging
-    
-    if (!targetRef.current) {
-      console.log(`Ref not found for: ${sectionName}`)
-      return
-    }
+    if (!targetRef.current) return
 
-    // Cancelar cualquier scroll previo
     window.scrollTo({
       top: window.pageYOffset,
       behavior: 'auto'
@@ -36,16 +28,15 @@ function Services() {
       const element = targetRef.current
       const rect = element.getBoundingClientRect()
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      const targetTop = rect.top + scrollTop - 100 // 100px offset desde arriba
+      const targetTop = rect.top + scrollTop - 100
 
       window.scrollTo({
         top: targetTop,
         behavior: 'smooth'
       })
-    }, 250) // Delay más largo para asegurar que la animación CSS termine
+    }, 250)
   }
 
-  // Datos de la flota
   const fleetData = {
     gruas: [
       { id: 1, name: "Grúa Móvil 25T", capacity: "25 toneladas", reach: "35m", image: "/api/placeholder/300/200", available: true },
@@ -73,18 +64,13 @@ function Services() {
   }
 
   const handleServiceClick = (section) => {
-    console.log(`Clicked: ${section}`) // Para debugging
-    
-    // Cerrar la sección si ya está activa
     if (activeSection === section) {
       setActiveSection(null)
       return
     }
 
-    // Activar la nueva sección
     setActiveSection(section)
     
-    // Mapear secciones a referencias
     const refMap = {
       gruas: gruasRef,
       camiones: camionesRef,
@@ -92,21 +78,16 @@ function Services() {
       transporte: transporteRef
     }
 
-    // Hacer scroll a la sección correspondiente
     const targetRef = refMap[section]
     if (targetRef) {
       scrollToSection(targetRef, section)
     }
   }
 
-  // Función para manejar cotizaciones sin navegación accidental
   const handleQuoteClick = (e, vehicleName) => {
     e.preventDefault()
     e.stopPropagation()
     
-    console.log(`Quote clicked for: ${vehicleName}`) // Para debugging
-    
-    // Scroll controlado a contacto
     setTimeout(() => {
       const contactSection = document.getElementById('contacto')
       if (contactSection) {
@@ -182,7 +163,6 @@ function Services() {
 
   return (
     <section id="servicios" className="services">
-      {/* Portada de servicios */}
       <div className="services-hero">
         <div className="services-hero-inner">
           <h2 className="services-title">Servicio de Grúas</h2>
@@ -239,7 +219,6 @@ function Services() {
         </div>
       </div>
 
-      {/* CRÍTICO: Mantener exactamente este orden */}
       {renderFleetGallery('gruas', 'Grúas', gruasRef)}
       {renderFleetGallery('camiones', 'Camiones Grúa', camionesRef)}
       {renderFleetGallery('elevacion', 'Equipos de Elevación', elevacionRef)}

@@ -22,7 +22,9 @@ function Navbar() {
         <li><a href="#contacto" onClick={(e) => { e.preventDefault(); scrollToSection('contacto'); }}>Contacto</a></li>
       </ul>
       
-      <button className="btn-cotizar" onClick={() => scrollToSection('contacto')}>Solicitar Cotización</button>
+      <button className="btn-cotizar" onClick={() => scrollToSection('contacto')}>
+        Cotizar Proyecto
+      </button>
     </nav>
   )
 }
