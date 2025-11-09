@@ -2,16 +2,16 @@
 
 .services-hero {
   background-size: cover;
-  background-position: center center; /* Mejorar centrado */
+  background-position: center center;
   background-repeat: no-repeat;
   background-image: url('../assets/imagen-fondo-servicio.jpg');
-  background-attachment: fixed; /* Efecto parallax opcional */
+  background-attachment: fixed;
   position: relative;
-  min-height: 80vh; /* Aumentar de 70vh a 80vh */
-  padding: 60px 0 80px; /* Reducir padding para más espacio visual */
+  min-height: 80vh;
+  padding: 60px 0 80px;
 }
 
-/* Overlay amarillo REDUCIDO para ver mejor la imagen */
+/* ACTUALIZADO: Overlay oscuro para consistencia */
 .services-hero::before {
   content: '';
   position: absolute;
@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(245, 245, 220, 0.60); /* Reducir de 0.85 a 0.60 */
+  background: rgba(0, 0, 0, 0.45); /* Cambiado de amarillo a oscuro */
   z-index: 1;
 }
 
@@ -34,13 +34,13 @@
 
 .services-title {
   font-size: 3.5rem;
-  color: #222; /* Más oscuro para mejor contraste */
+  color: #fff; /* Cambiado a blanco */
   font-weight: 800;
-  margin-bottom: 50px; /* Reducir de 60px a 50px */
+  margin-bottom: 50px;
   text-align: center;
-  text-shadow: 2px 2px 8px rgba(255,255,255,0.8); /* Sombra blanca más fuerte */
+  text-shadow: 3px 3px 12px rgba(0,0,0,0.9); /* Sombra oscura */
   letter-spacing: -1px;
-  background: rgba(255,255,255,0.1); /* Fondo sutil al título */
+  background: rgba(255,255,255,0.1); /* Fondo claro semi-transparente */
   backdrop-filter: blur(5px);
   display: inline-block;
   padding: 15px 30px;
@@ -51,7 +51,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 60px 120px; /* Reducir gaps para más compacto */
+  gap: 60px 120px;
   max-width: 800px;
   margin: 0 auto;
   justify-items: center;
@@ -60,11 +60,11 @@
   z-index: 2;
 }
 
-/* Tarjetas con mejor contraste */
+/* Tarjetas actualizadas para consistencia */
 .service-card {
-  background: rgba(255,255,255,0.25); /* Más opacidad base */
-  backdrop-filter: blur(20px); /* Más blur */
-  border: 2px solid rgba(255,255,255,0.4); /* Borde más visible */
+  background: rgba(255,255,255,0.95); /* Más opaco */
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255,255,255,0.8);
   border-radius: 20px;
   padding: 30px 25px;
   text-align: center;
@@ -72,14 +72,19 @@
   transition: all 0.3s ease;
   width: 200px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Sombra más fuerte */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra más fuerte */
 }
 
 .service-card:hover {
-  transform: translateY(-10px) scale(1.03); /* Más movimiento */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-  background: rgba(255,255,255,0.35); /* Más opacidad en hover */
-  border-color: rgba(255,255,255,0.6);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  background: rgba(255,255,255,1);
+  border-color: rgba(255,255,255,1);
+}
+
+.service-card.active {
+  background: rgba(255,255,255,1);
+  border-color: rgba(255,255,255,1);
 }
 
 .service-icon-wrapper {
@@ -100,33 +105,33 @@
 
 .service-card:hover .service-icon-img {
   filter: brightness(0) saturate(100%) invert(23%) sepia(99%) saturate(2%) hue-rotate(316deg) brightness(99%) contrast(99%);
-  transform: scale(1.08); /* Más zoom en hover */
+  transform: scale(1.08);
 }
 
 .service-card h3 {
   font-size: 1.3rem;
-  color: #222; /* Más oscuro */
-  font-weight: 700; /* Más peso */
+  color: #222;
+  font-weight: 700;
   margin: 0 0 8px;
   line-height: 1.2;
-  text-shadow: 1px 1px 3px rgba(255,255,255,0.8); /* Sombra más fuerte */
 }
 
 .fleet-count {
   font-size: 0.9rem;
-  color: #444; /* Más oscuro */
+  color: #444;
   font-style: italic;
-  font-weight: 600; /* Más peso */
-  text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+  font-weight: 600;
 }
 
-/* Resto del CSS igual... */
+/* Galerías de flota */
 .fleet-gallery {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease;
   background: #f9f9f5;
   border-top: 1px solid #e0e0d6;
+  position: relative;
+  scroll-margin-top: 100px;
 }
 
 .fleet-gallery.active {
@@ -261,6 +266,8 @@
   text-align: center;
   flex: 1;
   transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-quote {
@@ -270,6 +277,7 @@
 
 .btn-quote:hover {
   background: #555;
+  transform: translateY(-1px);
 }
 
 .btn-whatsapp-mini {
@@ -279,93 +287,32 @@
 
 .btn-whatsapp-mini:hover {
   background: #128C7E;
-}
-
-/* Mejoras para los botones de acción */
-.btn-quote {
-  background: #333;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 0.9rem;
-  text-align: center;
-  flex: 1;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.btn-quote:hover {
-  background: #555;
   transform: translateY(-1px);
 }
 
-/* Prevenir eventos de scroll no deseados */
-.fleet-gallery {
-  position: relative;
-  z-index: 1;
-}
-
-.fleet-gallery.active {
-  z-index: 2;
-}
-
-/* Mejorar la experiencia de scroll */
-.services {
-  scroll-behavior: smooth;
-}
-
-/* Asegurar que los botones de servicio sean clickeables */
-.service-card {
-  position: relative;
-  z-index: 10;
-}
-
-/* Correcciones específicas para el scroll */
-.service-card.active {
-  background: rgba(255,255,255,0.4);
-  border-color: rgba(255,255,255,0.7);
-}
-
-.fleet-gallery {
-  position: relative;
-  scroll-margin-top: 100px; /* Ayuda con el scroll automático */
-}
-
-/* Prevenir eventos no deseados */
-.fleet-actions > * {
-  pointer-events: auto;
-}
-
-/* Debugging temporal - puedes remover después */
-.fleet-gallery[data-section] {
-  border-left: 3px solid transparent;
-}
-
+/* Debugging - bordes de color */
 .fleet-gallery[data-section="gruas"].active {
-  border-left-color: #ff6b6b;
+  border-left: 3px solid #ff6b6b;
 }
 
 .fleet-gallery[data-section="camiones"].active {
-  border-left-color: #4ecdc4;
+  border-left: 3px solid #4ecdc4;
 }
 
 .fleet-gallery[data-section="elevacion"].active {
-  border-left-color: #45b7d1;
+  border-left: 3px solid #45b7d1;
 }
 
 .fleet-gallery[data-section="transporte"].active {
-  border-left-color: #96ceb4;
+  border-left: 3px solid #96ceb4;
 }
 
-/* Responsive mejorado */
+/* Responsive */
 @media (max-width: 768px) {
   .services-hero {
     min-height: 70vh;
     padding: 40px 0 60px;
-    background-attachment: scroll; /* Quitar parallax en móvil */
+    background-attachment: scroll;
   }
   
   .services-title {
