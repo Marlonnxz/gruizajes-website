@@ -14,6 +14,13 @@ import gruaRT530 from '../assets/fleet/gruas/GRUA-GROVE-RT-530DXL.png'
 import gruaRT528 from '../assets/fleet/gruas/GRUA-GROVE-RT-528C.png'
 import gruaSAC1600 from '../assets/fleet/gruas/GRUA-SAC1600S.png'
 import gruaPH122 from '../assets/fleet/gruas/GRUA-P_H-CENTURY-122.png'
+import gruaKobelco from '../assets/fleet/gruas/GRUA-KOBELCO-RK-70M.png'
+import gruaGroveAP415 from '../assets/fleet/gruas/GRUA-GROVE-AP415.png'
+
+// Importar imágenes de camiones grúa desde fleet/camiones
+import camionStinger12T from '../assets/fleet/camiones/CAMION-GRUA-TIPO-STINGER-12TONELADAS.png'
+import camionStinger15T from '../assets/fleet/camiones/CAMION-GRUA-TIPO-STINGER-15TONELADAS.png'
+
 
 function Services() {
   const [activeSection, setActiveSection] = useState(null)
@@ -121,12 +128,44 @@ function Services() {
         type: "Telescópica móvil",
         image: gruaPH122
       },
+      { 
+        id: 9, 
+        name: "Grúa Grove AP 415", 
+        capacity: "15 toneladas",
+        reach: "12.5m",
+        height: "19m",
+        type: "Industrial pick & carry",
+        image: gruaGroveAP415
+      },
+      { 
+        id: 10, 
+        name: "Grúa Kobelco RK 70M", 
+        capacity: "7 toneladas",
+        reach: "21m",
+        height: "22.6m",
+        type: "Todo terreno compacta",
+        image: gruaKobelco
+      },
     ],
     camiones: [
-      { id: 1, name: "Camión Grúa 3T", capacity: "3 toneladas", platform: "5m", image: "/api/placeholder/300/200" },
-      { id: 2, name: "Camión Grúa 5T", capacity: "5 toneladas", platform: "6m", image: "/api/placeholder/300/200" },
-      { id: 3, name: "Camión Grúa 8T", capacity: "8 toneladas", platform: "7m", image: "/api/placeholder/300/200" },
-      { id: 4, name: "Camión Grúa 12T", capacity: "12 toneladas", platform: "8m", image: "/api/placeholder/300/200" },
+      { 
+        id: 1, 
+        name: "Camión Grúa Stinger", 
+        capacity: "15 toneladas",
+        reach: "18m",
+        height: "22m",
+        type: "Boom truck montado",
+        image: camionStinger15T
+      },
+      { 
+        id: 2, 
+        name: "Camión Grúa Stinger", 
+        capacity: "12 toneladas",
+        reach: "14.5m",
+        height: "18m",
+        type: "Boom truck montado",
+        image: camionStinger12T
+      },
     ],
     elevacion: [
       { id: 1, name: "Plataforma Tijera 12m", height: "12 metros", capacity: "500kg", image: "/api/placeholder/300/200" },
