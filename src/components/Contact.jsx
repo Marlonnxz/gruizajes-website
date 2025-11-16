@@ -1,5 +1,7 @@
 import './Contact.css'
 import contactBg from '../assets/imagen-fondo.jpg'
+// Importa el icono personalizado
+import whatsappIcon from '../assets/icons/icono-whatsapp.png'
 
 function Contact() {
   const handleSubmit = (e) => {
@@ -83,7 +85,8 @@ function Contact() {
                         rel="noopener noreferrer"
                         className="btn-whatsapp-main"
                       >
-                        <span className="btn-icon">📱</span>
+                        {/* Icono personalizado */}
+                        <img src={whatsappIcon} alt="WhatsApp" className="btn-icon" style={{ width: "24px", height: "24px", marginRight: "8px" }} />
                         WHATSAPP DIRECTO
                       </a>
                     </div>
@@ -116,6 +119,7 @@ function Contact() {
                     <p>
                       <strong>WhatsApp:</strong><br/>
                       <a href="https://wa.me/573107866599" target="_blank" rel="noopener noreferrer">
+                        <img src={whatsappIcon} alt="WhatsApp" style={{ width: "18px", height: "18px", verticalAlign: "middle", marginRight: "4px" }} />
                         (+57) 310 786 6599
                       </a>
                     </p>
@@ -176,7 +180,8 @@ function Contact() {
         className="whatsapp-float"
         title="Contáctanos por WhatsApp"
       >
-        <span className="whatsapp-icon">📱</span>
+        {/* Icono personalizado */}
+        <img src={whatsappIcon} alt="WhatsApp" className="whatsapp-icon" style={{ width: "32px", height: "32px", marginRight: "8px" }} />
         <span className="whatsapp-text">WhatsApp</span>
       </a>
     </section>

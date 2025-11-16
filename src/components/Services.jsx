@@ -5,6 +5,16 @@ import camionesIcon from '../assets/icons/camiones-grua.png'
 import elevacionIcon from '../assets/icons/equipos-de-elevacion.png'
 import transporteIcon from '../assets/icons/vehiculos-de-transporte.png'
 
+// Importar imágenes de grúas desde fleet/gruas
+import gruaGMK6300L from '../assets/fleet/gruas/GRUA-GROVE-GMK6300L.png'
+import gruaTMS800 from '../assets/fleet/gruas/GRUA-GROVE_TMS800.png'
+import gruaLinkBelt from '../assets/fleet/gruas/GRUA-LINK-BELT-RTC_8065.png'
+import gruaRT160 from '../assets/fleet/gruas/GRUA-RT-160.png'
+import gruaRT530 from '../assets/fleet/gruas/GRUA-GROVE-RT-530DXL.png'
+import gruaRT528 from '../assets/fleet/gruas/GRUA-GROVE-RT-528C.png'
+import gruaSAC1600 from '../assets/fleet/gruas/GRUA-SAC1600S.png'
+import gruaPH122 from '../assets/fleet/gruas/GRUA-P_H-CENTURY-122.png'
+
 function Services() {
   const [activeSection, setActiveSection] = useState(null)
   
@@ -39,27 +49,94 @@ function Services() {
 
   const fleetData = {
     gruas: [
-      { id: 1, name: "Grúa Móvil 25T", capacity: "25 toneladas", reach: "35m", image: "/api/placeholder/300/200", available: true },
-      { id: 2, name: "Grúa Móvil 50T", capacity: "50 toneladas", reach: "45m", image: "/api/placeholder/300/200", available: true },
-      { id: 3, name: "Grúa Móvil 80T", capacity: "80 toneladas", reach: "60m", image: "/api/placeholder/300/200", available: false },
-      { id: 4, name: "Grúa Móvil 100T", capacity: "100 toneladas", reach: "70m", image: "/api/placeholder/300/200", available: true },
-      { id: 5, name: "Grúa Móvil 130T", capacity: "130 toneladas", reach: "80m", image: "/api/placeholder/300/200", available: true },
+      { 
+        id: 1, 
+        name: "Grúa Grove GMK6300L", 
+        capacity: "300 toneladas",
+        reach: "80m",
+        height: "120m",
+        type: "Todo terreno",
+        image: gruaGMK6300L
+      },
+      { 
+        id: 2, 
+        name: "Grúa SAC1600S SANY", 
+        capacity: "160 toneladas",
+        reach: "73m",
+        height: "101m",
+        type: "Todo terreno",
+        image: gruaSAC1600
+      },
+      { 
+        id: 3, 
+        name: "Grúa Grove TMS800E", 
+        capacity: "80 toneladas",
+        reach: "39m",
+        height: "41m",
+        type: "Telescópica móvil",
+        image: gruaTMS800
+      },
+      { 
+        id: 4, 
+        name: "Grúa Link Belt RTC 8065", 
+        capacity: "65 toneladas",
+        reach: "35m",
+        height: "38m",
+        type: "Todo terreno",
+        image: gruaLinkBelt
+      },
+      { 
+        id: 5, 
+        name: "Grúa Terex RT 160", 
+        capacity: "60 toneladas",
+        reach: "35m",
+        height: "57m",
+        type: "Todo terreno",
+        image: gruaRT160
+      },
+      { 
+        id: 6, 
+        name: "Grúa Grove RT 530 DXL", 
+        capacity: "30 toneladas",
+        reach: "27m",
+        height: "30m",
+        type: "Todo terreno",
+        image: gruaRT530
+      },
+      { 
+        id: 7, 
+        name: "Grúa Grove RT 528C", 
+        capacity: "28 toneladas",
+        reach: "21m",
+        height: "24m",
+        type: "Todo terreno",
+        image: gruaRT528
+      },
+      { 
+        id: 8, 
+        name: "Grúa P&H Century 122", 
+        capacity: "22 toneladas",
+        reach: "19m",
+        height: "22m",
+        type: "Telescópica móvil",
+        image: gruaPH122
+      },
     ],
     camiones: [
-      { id: 1, name: "Camión Grúa 3T", capacity: "3 toneladas", platform: "5m", image: "/api/placeholder/300/200", available: true },
-      { id: 2, name: "Camión Grúa 5T", capacity: "5 toneladas", platform: "6m", image: "/api/placeholder/300/200", available: true },
-      { id: 3, name: "Camión Grúa 8T", capacity: "8 toneladas", platform: "7m", image: "/api/placeholder/300/200", available: false },
-      { id: 4, name: "Camión Grúa 12T", capacity: "12 toneladas", platform: "8m", image: "/api/placeholder/300/200", available: true },
+      { id: 1, name: "Camión Grúa 3T", capacity: "3 toneladas", platform: "5m", image: "/api/placeholder/300/200" },
+      { id: 2, name: "Camión Grúa 5T", capacity: "5 toneladas", platform: "6m", image: "/api/placeholder/300/200" },
+      { id: 3, name: "Camión Grúa 8T", capacity: "8 toneladas", platform: "7m", image: "/api/placeholder/300/200" },
+      { id: 4, name: "Camión Grúa 12T", capacity: "12 toneladas", platform: "8m", image: "/api/placeholder/300/200" },
     ],
     elevacion: [
-      { id: 1, name: "Plataforma Tijera 12m", height: "12 metros", capacity: "500kg", image: "/api/placeholder/300/200", available: true },
-      { id: 2, name: "Plataforma Tijera 18m", height: "18 metros", capacity: "500kg", image: "/api/placeholder/300/200", available: true },
-      { id: 3, name: "Canastilla 26m", height: "26 metros", capacity: "300kg", image: "/api/placeholder/300/200", available: true },
+      { id: 1, name: "Plataforma Tijera 12m", height: "12 metros", capacity: "500kg", image: "/api/placeholder/300/200" },
+      { id: 2, name: "Plataforma Tijera 18m", height: "18 metros", capacity: "500kg", image: "/api/placeholder/300/200" },
+      { id: 3, name: "Canastilla 26m", height: "26 metros", capacity: "300kg", image: "/api/placeholder/300/200" },
     ],
     transporte: [
-      { id: 1, name: "Plataforma 20T", capacity: "20 toneladas", length: "12m", image: "/api/placeholder/300/200", available: true },
-      { id: 2, name: "Cama Baja 40T", capacity: "40 toneladas", length: "15m", image: "/api/placeholder/300/200", available: false },
-      { id: 3, name: "Cama Baja 60T", capacity: "60 toneladas", length: "18m", image: "/api/placeholder/300/200", available: true },
+      { id: 1, name: "Plataforma 20T", capacity: "20 toneladas", length: "12m", image: "/api/placeholder/300/200" },
+      { id: 2, name: "Cama Baja 40T", capacity: "40 toneladas", length: "15m", image: "/api/placeholder/300/200" },
+      { id: 3, name: "Cama Baja 60T", capacity: "60 toneladas", length: "18m", image: "/api/placeholder/300/200" },
     ]
   }
 
@@ -122,17 +199,15 @@ function Services() {
             <div key={item.id} className="fleet-card">
               <div className="fleet-image">
                 <img src={item.image} alt={item.name} />
-                <div className={`status-badge ${item.available ? 'available' : 'unavailable'}`}>
-                  {item.available ? '✓ Disponible' : '⏰ En servicio'}
-                </div>
               </div>
               <div className="fleet-info">
                 <h4>{item.name}</h4>
                 <div className="fleet-specs">
-                  <span>📏 {item.capacity}</span>
-                  {item.reach && <span>📐 {item.reach}</span>}
+                  <span>⚖️ {item.capacity}</span>
+                  {item.reach && <span>📐 Alcance: {item.reach}</span>}
+                  {item.height && <span>⬆️ Altura: {item.height}</span>}
+                  {item.type && <span>🏗️ {item.type}</span>}
                   {item.platform && <span>🚛 {item.platform}</span>}
-                  {item.height && <span>⬆️ {item.height}</span>}
                   {item.length && <span>📏 {item.length}</span>}
                 </div>
                 <div className="fleet-actions">
@@ -177,7 +252,6 @@ function Services() {
                 <img src={gruasIcon} alt="Grúas" className="service-icon-img" />
               </div>
               <h3>Grúas</h3>
-              <span className="fleet-count">5 equipos</span>
             </button>
 
             <button 
@@ -189,7 +263,6 @@ function Services() {
                 <img src={camionesIcon} alt="Camiones Grúa" className="service-icon-img" />
               </div>
               <h3>Camiones Grúa</h3>
-              <span className="fleet-count">4 equipos</span>
             </button>
 
             <button 
@@ -201,7 +274,6 @@ function Services() {
                 <img src={elevacionIcon} alt="Equipos de elevación" className="service-icon-img" />
               </div>
               <h3>Equipos de elevación</h3>
-              <span className="fleet-count">3 equipos</span>
             </button>
 
             <button 
@@ -213,7 +285,6 @@ function Services() {
                 <img src={transporteIcon} alt="Vehículos de transporte" className="service-icon-img" />
               </div>
               <h3>Vehículos de Transporte</h3>
-              <span className="fleet-count">3 equipos</span>
             </button>
           </div>
         </div>
