@@ -312,7 +312,7 @@ function Services() {
         data-section={fleetType}
       >
         <div className="gallery-header">
-          <h3>🚛 Nuestra Flota - {title}</h3>
+          <h3>Nuestra Flota - {title}</h3>
           <button
             className="close-gallery"
             onClick={() => setActiveSection(null)}
