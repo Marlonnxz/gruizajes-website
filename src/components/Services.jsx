@@ -49,23 +49,12 @@ function Services() {
   const scrollToSection = (targetRef, sectionName) => {
     if (!targetRef.current) return;
 
-    window.scrollTo({
-      top: window.pageYOffset,
-      behavior: "auto",
-    });
-
     setTimeout(() => {
-      const element = targetRef.current;
-      const rect = element.getBoundingClientRect();
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      const targetTop = rect.top + scrollTop - 100;
-
-      window.scrollTo({
-        top: targetTop,
+      targetRef.current.scrollIntoView({
         behavior: "smooth",
+        block: "start",
       });
-    }, 250);
+    }, 150);
   };
 
   const fleetData = {
@@ -265,7 +254,11 @@ function Services() {
     ],
   };
 
+
   const handleServiceClick = (section) => {
+
+    const isSwitching = activeSection !== null && activeSection !== section;
+
     if (activeSection === section) {
       setActiveSection(null);
       return;
@@ -281,8 +274,17 @@ function Services() {
     };
 
     const targetRef = refMap[section];
+
     if (targetRef) {
-      scrollToSection(targetRef, section);
+      const delay = isSwitching ? 600 : 150;
+      setTimeout(() => {
+        if (targetRef.current) {
+          targetRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, delay);
     }
   };
 

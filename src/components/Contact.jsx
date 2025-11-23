@@ -1,6 +1,5 @@
 import './Contact.css'
 import contactBg from '../assets/imagen-fondo.jpg'
-// Importa el icono personalizado
 import whatsappIcon from '../assets/icons/icono-whatsapp.png'
 
 function Contact() {

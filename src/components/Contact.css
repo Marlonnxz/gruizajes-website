@@ -60,7 +60,7 @@
 .contact-subtitle {
   font-size: 1.2rem;
   color: #fff;
-  margin-top: 0; /* REMOVIDO margin-top */
+  margin-top: 0;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   font-weight: 400;
   background: rgba(255, 255, 255, 0.08);

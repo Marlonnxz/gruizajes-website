@@ -165,7 +165,7 @@
 }
 
 .fleet-gallery.active {
-  max-height: 3000px;
+  max-height: 12000px; 
   padding: 60px 0;
 }
 
