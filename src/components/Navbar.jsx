@@ -11,9 +11,15 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
+      {}
+      <div 
+        className="navbar-logo" 
+        onClick={() => scrollToSection('inicio')} 
+        style={{ cursor: 'pointer' }}
+      >
         <img src={logo} alt="Gruizajes" className="logo-img" />
-        <span className="logo-text">GRUIZAJES S.A.S</span>
+        {}
+        <span className="logo-text">GRUIZAJES <span>S.A.S</span></span>
       </div>
       
       <ul className="navbar-menu">
