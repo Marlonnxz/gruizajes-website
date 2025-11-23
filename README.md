@@ -1,16 +1,41 @@
-# React + Vite
+# 🏗️ Gruizajes Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page profesional para **Gruizajes S.A.S** - Servicios especializados de grúas y transporte.
 
-Currently, two official plugins are available:
+## 🛠️ Stack Tecnológico
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19.1.1
+- Vite 7.1.7
+- React Icons 5.5.0
+- ESLint
+## 📦 Instalación
+Clonar repositorio
+git clone https://github.com/Marlonnxz/gruizajes-website.git
 
-## React Compiler
+Instalar dependencias
+npm install
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Iniciar servidor de desarrollo
+npm run dev
 
-## Expanding the ESLint configuration
+## 📜 Scripts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm run preview` | Preview del build |
+| `npm run lint` | Análisis de código |
+
+## 📁 Estructura
+
+- **components/** - Componentes React
+- **assets/** - Imágenes y recursos
+- **App.jsx** - Componente principal
+- **main.jsx** - Punto de entrada
+
+Proyecto privado - © Gruizajes S.A.S
+
+---
+
+Desarrollado para **Gruizajes S.A.S**
