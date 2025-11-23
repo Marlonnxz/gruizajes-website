@@ -19,17 +19,20 @@ Iniciar servidor de desarrollo
 npm run dev
 
 ## 📜 Scripts
-npm run dev # Servidor de desarrollo
-npm run build # Build de producción
-npm run preview # Preview del build
-npm run lint # Análisis de código
+
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm run preview` | Preview del build |
+| `npm run lint` | Análisis de código |
 
 ## 📁 Estructura
-src/
-├── components/ # Componentes React
-├── assets/ # Imágenes y recursos
-├── App.jsx # Componente principal
-└── main.jsx # Punto de entrada
+
+- **components/** - Componentes React
+- **assets/** - Imágenes y recursos
+- **App.jsx** - Componente principal
+- **main.jsx** - Punto de entrada
 
 Proyecto privado - © Gruizajes S.A.S
 
